@@ -726,11 +726,14 @@ a:hover {
         </div>
     </section>
     <section class="food-menu">
-        <div class="container">
-            <h2 class="text-center">Menu</h2>
-            <div class="heading-border"></div>
-            <div class="grid-2">
-                 <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+        <section class="food-menu">
+    <div class="container">
+        <h2 class="text-center">Menu</h2>
+        <div class="heading-border"></div>
+
+        <h3 class="text-center">Food</h3>
+        <div class="grid-2">
+            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg" data-category="food">
                 <div class="food-menu-img">
                     <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
                 </div>
@@ -743,20 +746,7 @@ a:hover {
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
-                <div class="food-menu-img">
-                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Sandwich</h4>
-                    <p class="food-price">$6.00</p>
-                    <p class="food-details">Tasty sandwich with fresh vegetables and meat.</p>
-                    <input type="number" class="quantity-input" value="1" min="1">
-                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
-                </div>
-            </div>
-
-            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
+            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg" data-category="food">
                 <div class="food-menu-img">
                     <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
                 </div>
@@ -769,125 +759,118 @@ a:hover {
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Pizza" data-price="8.00" data-image="img/food/p1.jpg">
+            <div class="food-menu-box" data-name="Pizza" data-price="8.00" data-image="img/food/p1.jpg" data-category="food">
                 <div class="food-menu-img">
                     <img src="img/food/p1.jpg" alt="Pizza" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
                     <h4>Pizza</h4>
                     <p class="food-price">$8.00</p>
-                    <p class="food-details">Another delicious pizza option.</p>
+                    <p class="food-details">Delicious pizza with various toppings.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
                     <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+            <div class="food-menu-box" data-name="Pasta" data-price="9.50" data-image="img/food/pasta.jpg" data-category="food">
                 <div class="food-menu-img">
-                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                    <img src="img/food/pasta.jpg" alt="Pasta" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
-                    <h4>Sandwich</h4>
-                    <p class="food-price">$6.00</p>
-                    <p class="food-details">Another fresh sandwich variant.</p>
+                    <h4>Pasta</h4>
+                    <p class="food-price">$9.50</p>
+                    <p class="food-details">Creamy pasta with your choice of sauce.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
                     <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
                 </div>
             </div>
-
-            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
-                <div class="food-menu-img">
-                    <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Burger</h4>
-                    <p class="food-price">$7.00</p>
-                    <p class="food-details">Extra beefy burger with toppings.</p>
-                    <input type="number" class="quantity-input" value="1" min="1">
-                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
-                </div>
-            </div>
-
         </div>
-    </div>
-</section>
-<div id="orderModal" class="modal">
-        <div class="modal-content">
-            <span onclick="closeOrderModal()" style="float: right; cursor: pointer; font-size: 24px;">&times;</span>
-            <h2 class="text-center">Order Details</h2>
-            <div id="modalSteps">
-                <div id="step-1" class="modal-step active">
-                    <h3>Review Your Order</h3>
-                    <div id="modal-cart-items">
-                        </div>
-                    <p>Total: <span id="modal-cart-total">$0.00</span></p>
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="nextStep()">Continue</button>
-                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
-                    </div>
-                </div>
 
-                <div id="step-2" class="modal-step">
-                    <h3>Delivery/Dine-in Details</h3>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" required>
-                    <label for="phone">Phone Number:</label>
-                    <input type="tel" id="phone" required>
-                    <label for="address">Address (for delivery):</label>
-                    <textarea id="address"></textarea>
-                    <label for="order-type">Dine In / Take Out:</label>
-                    <select id="order-type">
-                        <option value="dine_in">Dine In</option>
-                        <option value="take_out">Take Out</option>
-                        <option value="delivery">Delivery</option>
-                    </select>
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="nextStep()">Continue</button>
-                        <button class="btn-secondary" onclick="prevStep()">Back</button>
-                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
-                    </div>
+        <h3 class="text-center">Drinks</h3>
+        <div class="grid-2">
+            <div class="food-menu-box" data-name="Soda" data-price="2.00" data-image="img/drinks/soda.jpg" data-category="drinks">
+                <div class="food-menu-img">
+                    <img src="img/drinks/soda.jpg" alt="Soda" class="img-responsive img-curve">
                 </div>
-
-                <div id="step-3" class="modal-step">
-                    <h3>Payment Method</h3>
-                    <label for="payment-method">Select Payment Method:</label>
-                    <select id="payment-method">
-                        <option value="cash">Cash</option>
-                        <option value="gcash">GCash</option>
-                        <option value="wallet_card">Wallet Card</option>
-                    </select>
-                    <div id="payment-details">
-                        </div>
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="submitOrder()">Submit Order</button>
-                        <button class="btn-secondary" onclick="prevStep()">Back</button>
-                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
-                    </div>
+                <div class="food-menu-desc">
+                    <h4>Soda</h4>
+                    <p class="food-price">$2.00</p>
+                    <p class="food-details">Refreshing carbonated soda.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
                 </div>
+            </div>
 
-                <div id="step-4" class="modal-step">
-                    <h3>Review Your Information</h3>
-                    <div id="review-details">
-                        </div>
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="finalSubmit()">Submit Now</button>
-                        <button class="btn-secondary" onclick="prevStep()">Back</button>
-                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
-                    </div>
+            <div class="food-menu-box" data-name="Juice" data-price="2.50" data-image="img/drinks/juice.jpg" data-category="drinks">
+                <div class="food-menu-img">
+                    <img src="img/drinks/juice.jpg" alt="Juice" class="img-responsive img-curve">
                 </div>
+                <div class="food-menu-desc">
+                    <h4>Juice</h4>
+                    <p class="food-price">$2.50</p>
+                    <p class="food-details">Freshly squeezed fruit juice.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
 
-                <div id="step-5" class="modal-step">
-                    <h3>Order Confirmation</h3>
-                    <div id="receipt">
-                        </div>
-                    <div class="modal-actions">
-                        <button class="btn-primary" onclick="closeOrderModal()">Close</button>
-                    </div>
+            <div class="food-menu-box" data-name="Water" data-price="1.00" data-image="img/drinks/water.jpg" data-category="drinks">
+                <div class="food-menu-img">
+                    <img src="img/drinks/water.jpg" alt="Water" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Water</h4>
+                    <p class="food-price">$1.00</p>
+                    <p class="food-details">Pure and refreshing water.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="text-center">Dessert</h3>
+        <div class="grid-2">
+            <div class="food-menu-box" data-name="Cake" data-price="5.00" data-image="img/dessert/cake.jpg" data-category="dessert">
+                <div class="food-menu-img">
+                    <img src="img/dessert/cake.jpg" alt="Cake" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Cake</h4>
+                    <p class="food-price">$5.00</p>
+                    <p class="food-details">Delicious slice of chocolate cake.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Ice Cream" data-price="4.00" data-image="img/dessert/icecream.jpg" data-category="dessert">
+                <div class="food-menu-img">
+                    <img src="img/dessert/icecream.jpg" alt="Ice Cream" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Ice Cream</h4>
+                    <p class="food-price">$4.00</p>
+                    <p class="food-details">A scoop of your favorite ice cream flavor.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Pudding" data-price="3.50" data-image="img/dessert/pudding.jpg" data-category="dessert">
+                <div class="food-menu-img">
+                    <img src="img/dessert/pudding.jpg" alt="Pudding" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Pudding</h4>
+                    <p class="food-price">$3.50</p>
+                    <p class="food-details">Smooth and creamy pudding.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
                 </div>
             </div>
         </div>
     </div>
-
+</section>
     <section class="footer">
         <div class="container">
             <div class="grid-3">
