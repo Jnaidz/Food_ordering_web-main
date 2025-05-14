@@ -1037,11 +1037,25 @@ a:hover {
             if (stepNumber === 3) {
                 const paymentMethod = $('#payment-method').val();
                 let paymentDetailsHtml = '';
-                if (paymentMethod === 'gcash') {
-                    paymentDetailsHtml = '<label for="gcash-number">GCash Number:</label><input type="text" id="gcash-number">';
-                } else if (paymentMethod === 'wallet_card') {
-                    paymentDetailsHtml = '<label for="card-number">Card Number:</label><input type="text" id="card-number">';
-                }
+               if (paymentMethod === 'gcash') {
+    const totalAmount = parseFloat($('#modal-cart-total').text().replace('$', ''));
+    paymentDetailsHtml = `
+        <label for="gcash-number">GCash Number:</label>
+        <input type="text" id="gcash-number" placeholder="09XXXXXXXXX"><br>
+        <label for="gcash-amount">Amount to Pay (max $${totalAmount.toFixed(2)}):</label>
+        <input type="number" id="gcash-amount" max="${totalAmount}" step="0.01">
+    `;
+} else if (paymentMethod === 'wallet_card') {
+    paymentDetailsHtml = `
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+    `;
+} else if (paymentMethod === 'cod') {
+    paymentDetailsHtml = `
+        <p><strong>Payment on Delivery (Cash)</strong></p>
+    `;
+}
+
                 $('#payment-details').html(paymentDetailsHtml);
             } else if (stepNumber === 4) {
                 const name = $('#name').val();
@@ -1050,8 +1064,11 @@ a:hover {
                 const orderType = $('#order-type').val();
                 const paymentMethod = $('#payment-method').val();
                 let paymentInfo = paymentMethod;
-                if (paymentMethod === 'gcash') {
-                    paymentInfo += `: ${$('#gcash-number').val()}`;
+               if (paymentMethod === 'gcash') {
+    const gcashNum = $('#gcash-number').val();
+    const gcashAmt = $('#gcash-amount').val();
+    paymentDetails = `GCash: ${gcashNum}, Amount: $${parseFloat(gcashAmt).toFixed(2)}`;
+
                 } else if (paymentMethod === 'wallet_card') {
                     paymentInfo += `: ****-****-****-${$('#card-number').val().slice(-4)}`;
                 }
