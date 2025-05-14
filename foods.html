@@ -1111,46 +1111,64 @@ a:hover {
             nextStep(); // Move to the review step
         }
 
-        function finalSubmit() {
-            const name = $('#name').val();
-            const phone = $('#phone').val();
-            const address = $('#address').val();
-            const orderType = $('#order-type').val();
-            const paymentMethod = $('#payment-method').val();
-            let paymentDetails = '';
-            if (paymentMethod === 'gcash') {
-                paymentDetails = `GCash: ${$('#gcash-number').val()}`;
-            } else if (paymentMethod === 'wallet_card') {
-                paymentDetails = `Card: ****-****-****-${$('#card-number').val().slice(-4)}`;
-            }
+      function finalSubmit() {
+    const name = $('#name').val();
+    const phone = $('#phone').val();
+    const address = $('#address').val();
+    const orderType = $('#order-type').val();
+    const paymentMethod = $('#payment-method').val();
+    let paymentDetails = '';
+    let amountPaid = 0;
+    const totalAmount = parseFloat($('#modal-cart-total').text().replace('$', ''));
 
-            const receipt = generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, cart);
-            $('#receipt').html(receipt);
-            saveOrderToHistory(name, phone, address, orderType, paymentMethod, paymentDetails, cart, parseFloat($('#modal-cart-total').text().replace('$', '')));
-            cart = [];
-            saveCart();
-            updateCartDisplay();
-            nextStep(); // Move to the receipt step
+    if (paymentMethod === 'gcash') {
+        const gcashNum = $('#gcash-number').val();
+        amountPaid = parseFloat($('#gcash-amount').val());
+        if (isNaN(amountPaid) || amountPaid <= 0 || amountPaid > totalAmount) {
+            alert('Please enter a valid GCash amount not exceeding the total.');
+            return;
         }
+        paymentDetails = `GCash: ${gcashNum}, Amount: $${amountPaid.toFixed(2)}`;
+    } else if (paymentMethod === 'wallet_card') {
+        const cardNum = $('#card-number').val();
+        amountPaid = totalAmount;
+        paymentDetails = `Card: ****-****-****-${cardNum.slice(-4)}`;
+    } else if (paymentMethod === 'cod') {
+        amountPaid = totalAmount;
+        paymentDetails = 'Cash on Delivery';
+    }
 
-        function generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, items) {
-            let receiptHtml = '<h3>Order Receipt</h3>';
-            receiptHtml += `<p><strong>Name:</strong> ${name}</p>`;
-            receiptHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
-            if (orderType === 'delivery') {
-                receiptHtml += `<p><strong>Address:</strong> ${address}</p>`;
-            }
-            receiptHtml += `<p><strong>Order Type:</strong> ${orderType.replace('_', ' ')}</p>`;
-            receiptHtml += `<p><strong>Payment Method:</strong> ${paymentMethod} ${paymentDetails}</p>`;
-            receiptHtml += '<h4>Order Items:</h4>';
-            items.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                receiptHtml += `<p>${item.name} x ${item.quantity} - $${itemTotal.toFixed(2)}</p>`;
-            });
-            receiptHtml += `<p><strong>Total:</strong> <span style="font-weight: bold;">${$('#modal-cart-total').text()}</span></p>`;
-            receiptHtml += '<p>Thank you for your order!</p>';
-            return receiptHtml;
-        }
+    const receipt = generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, cart, amountPaid);
+    $('#receipt').html(receipt);
+
+    saveOrderToHistory(name, phone, address, orderType, paymentMethod, paymentDetails, cart, totalAmount, amountPaid);
+
+    cart = [];
+    saveCart();
+    updateCartDisplay();
+    nextStep(); // Move to the receipt step
+}
+
+
+       function generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, items, amountPaid) {
+    let receiptHtml = '<h3>Order Receipt</h3>';
+    receiptHtml += `<p><strong>Name:</strong> ${name}</p>`;
+    receiptHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
+    if (orderType === 'delivery') {
+        receiptHtml += `<p><strong>Address:</strong> ${address}</p>`;
+    }
+    receiptHtml += `<p><strong>Order Type:</strong> ${orderType.replace('_', ' ')}</p>`;
+    receiptHtml += `<p><strong>Payment Method:</strong> ${paymentMethod} ${paymentDetails}</p>`;
+    receiptHtml += '<h4>Order Items:</h4>';
+    items.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        receiptHtml += `<p>${item.name} x ${item.quantity} - $${itemTotal.toFixed(2)}</p>`;
+    });
+    receiptHtml += `<p><strong>Total:</strong> <span style="font-weight: bold;">${$('#modal-cart-total').text()}</span></p>`;
+    receiptHtml += `<p><strong>Amount Paid:</strong> $${parseFloat(amountPaid).toFixed(2)}</p>`;
+    receiptHtml += '<p>Thank you for your order!</p>';
+    return receiptHtml;
+}
 
         function saveOrderToHistory(name, phone, address, orderType, paymentMethod, paymentDetails, items, total) {
             const order = {
