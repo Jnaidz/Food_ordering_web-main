@@ -934,7 +934,7 @@ a:hover {
     <script>
         let cart = [];
 
-      $('.add-to-cart-btn').on('click', function() {
+$('.add-to-cart-btn').on('click', function() {
     const btn = $(this);
     const foodBox = btn.closest('.food-menu-box');
     const name = foodBox.data('name');
@@ -945,13 +945,20 @@ a:hover {
     if (btn.text().trim() === 'Add to Cart') {
         addItemToCart(name, price, image, quantity);
         btn.text('Selected');
-        btn.addClass('selected');
+        btn.css({
+            'background-color': 'green',
+            'color': 'white'
+        });
     } else {
         removeItemFromCartByName(name);
         btn.text('Add to Cart');
-        btn.removeClass('selected');
+        btn.css({
+            'background-color': '',
+            'color': ''
+        });
     }
 });
+
 function removeItemFromCartByName(name) {
     const index = cart.findIndex(item => item.name === name);
     if (index !== -1) {
