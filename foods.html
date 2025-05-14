@@ -726,16 +726,24 @@ a:hover {
         </div>
     </section>
     <section class="food-menu">
-        <div class="container">
-            <h2 class="text-center">Menu</h2>
-            <div class="heading-border"></div>
-            <div class="grid-2">
-                 <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+    <div class="container">
+        <h2 class="text-center">Menu</h2>
+        <div class="heading-border"></div>
+
+        <div class="menu-categories">
+            <button class="filter-button active" data-filter="all">All</button>
+            <button class="filter-button" data-filter="food">Food</button>
+            <button class="filter-button" data-filter="drink">Drinks</button>
+            <button class="filter-button" data-filter="dessert">Dessert</button>
+        </div>
+
+        <div class="grid-2 menu-items">
+             <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg" data-category="food" data-type="food">
                 <div class="food-menu-img">
                     <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
-                    <h4>Sandwich</h4>
+                    <h4>Sandwich <span class="item-type">(Pagkaon)</span></h4>
                     <p class="food-price">$6.00</p>
                     <p class="food-details">Tasty sandwich with fresh vegetables and meat.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
@@ -743,25 +751,12 @@ a:hover {
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
-                <div class="food-menu-img">
-                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Sandwich</h4>
-                    <p class="food-price">$6.00</p>
-                    <p class="food-details">Tasty sandwich with fresh vegetables and meat.</p>
-                    <input type="number" class="quantity-input" value="1" min="1">
-                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
-                </div>
-            </div>
-
-            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
+            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg" data-category="food" data-type="food">
                 <div class="food-menu-img">
                     <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
-                    <h4>Burger</h4>
+                    <h4>Burger <span class="item-type">(Pagkaon)</span></h4>
                     <p class="food-price">$7.00</p>
                     <p class="food-details">Juicy beef burger with lettuce and cheese.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
@@ -769,12 +764,12 @@ a:hover {
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Pizza" data-price="8.00" data-image="img/food/p1.jpg">
+            <div class="food-menu-box" data-name="Pizza" data-price="8.00" data-image="img/food/p1.jpg" data-category="food" data-type="food">
                 <div class="food-menu-img">
                     <img src="img/food/p1.jpg" alt="Pizza" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
-                    <h4>Pizza</h4>
+                    <h4>Pizza <span class="item-type">(Pagkaon)</span></h4>
                     <p class="food-price">$8.00</p>
                     <p class="food-details">Another delicious pizza option.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
@@ -782,35 +777,237 @@ a:hover {
                 </div>
             </div>
 
-            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+            <div class="food-menu-box" data-name="Steak" data-price="15.00" data-image="img/food/steak.jpg" data-category="food" data-type="food">
                 <div class="food-menu-img">
-                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                    <img src="img/food/steak.jpg" alt="Steak" class="img-responsive img-curve">
                 </div>
                 <div class="food-menu-desc">
-                    <h4>Sandwich</h4>
+                    <h4>Steak <span class="item-type">(Pagkaon)</span></h4>
+                    <p class="food-price">$15.00</p>
+                    <p class="food-details">Grilled premium beef steak.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Pasta" data-price="9.50" data-image="img/food/pasta.jpg" data-category="food" data-type="food">
+                <div class="food-menu-img">
+                    <img src="img/food/pasta.jpg" alt="Pasta" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Pasta <span class="item-type">(Pagkaon)</span></h4>
+                    <p class="food-price">$9.50</p>
+                    <p class="food-details">Delicious Italian pasta dish.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Salad" data-price="7.50" data-image="img/food/salad.jpg" data-category="food" data-type="food">
+                <div class="food-menu-img">
+                    <img src="img/food/salad.jpg" alt="Salad" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Salad <span class="item-type">(Pagkaon)</span></h4>
+                    <p class="food-price">$7.50</p>
+                    <p class="food-details">Fresh and healthy mixed salad.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Coke" data-price="2.00" data-image="img/drinks/coke.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/coke.jpg" alt="Coke" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Coke <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$2.00</p>
+                    <p class="food-details">Refreshing coca-cola.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Juice" data-price="3.00" data-image="img/drinks/juice.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/juice.jpg" alt="Juice" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Juice <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$3.00</p>
+                    <p class="food-details">Freshly squeezed orange juice.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Lemonade" data-price="2.50" data-image="img/drinks/lemonade.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/lemonade.jpg" alt="Lemonade" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Lemonade <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$2.50</p>
+                    <p class="food-details">Sweet and tangy lemonade.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Iced Tea" data-price="3.50" data-image="img/drinks/icedtea.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/icedtea.jpg" alt="Iced Tea" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Iced Tea <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$3.50</p>
+                    <p class="food-details">Refreshing black iced tea.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Coffee" data-price="4.00" data-image="img/drinks/coffee.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/coffee.jpg" alt="Coffee" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Coffee <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$4.00</p>
+                    <p class="food-details">Freshly brewed coffee.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Milkshake" data-price="5.00" data-image="img/drinks/milkshake.jpg" data-category="drink" data-type="drink">
+                <div class="food-menu-img">
+                    <img src="img/drinks/milkshake.jpg" alt="Milkshake" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Milkshake <span class="item-type">(Iminum)</span></h4>
+                    <p class="food-price">$5.00</p>
+                    <p class="food-details">Creamy chocolate milkshake.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Ice Cream" data-price="4.00" data-image="img/desserts/icecream.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/icecream.jpg" alt="Ice Cream" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Ice Cream <span class="item-type">(Tam-is)</span></h4>
+                    <p class="food-price">$4.00</p>
+                    <p class="food-details">Delicious vanilla ice cream.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Cake" data-price="5.00" data-image="img/desserts/cake.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/cake.jpg" alt="Cake" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Cake <span class="item-type">(Tam-is)</span></h4>
+                    <p class="food-price">$5.00</p>
+                    <p class="food-details">Chocolate fudge cake.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Brownie" data-price="3.50" data-image="img/desserts/brownie.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/brownie.jpg" alt="Brownie" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Brownie <span class="item-type">(Tam-is)</span></h4>
+                    <p class="food-price">$3.50</p>
+                    <p class="food-details">Rich chocolate brownie.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Pudding" data-price="4.50" data-image="img/desserts/pudding.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/pudding.jpg" alt="Pudding" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Pudding <span class="item-type">(Tam-is)</span></h4>
+                    <p class="food-price">$4.50</p>
+                    <p class="food-details">Sweet vanilla pudding.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Donut" data-price="2.00" data-image="img/desserts/donut.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/donut.jpg" alt="Donut" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Donut <span class="item-type">(Tam-is)</span></h4>
+                    <p class="food-price">$2.00</p>
+                    <p class="food-details">Glazed chocolate donut.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Pie" data-price="6.00" data-image="img/desserts/pie.jpg" data-category="dessert" data-type="dessert">
+                <div class="food-menu-img">
+                    <img src="img/desserts/pie.jpg" alt="Pie" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Pie <span class="item-type">(Tam-is)</span></h4>
                     <p class="food-price">$6.00</p>
-                    <p class="food-details">Another fresh sandwich variant.</p>
+                    <p class="food-details">Apple crumble pie.</p>
                     <input type="number" class="quantity-input" value="1" min="1">
-                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                    <button typetype="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
                 </div>
             </div>
-
-            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
-                <div class="food-menu-img">
-                    <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
-                </div>
-                <div class="food-menu-desc">
-                    <h4>Burger</h4>
-                    <p class="food-price">$7.00</p>
-                    <p class="food-details">Extra beefy burger with toppings.</p>
-                    <input type="number" class="quantity-input" value="1" min="1">
-                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
+
+<script>
+    const filterButtons = document.querySelectorAll('.filter-button');
+    const menuItems = document.querySelectorAll('.food-menu-box');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.dataset.filter;
+
+            // Remove active class from all buttons
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+
+            // Add active class to the clicked button
+            this.classList.add('active');
+
+            menuItems.forEach(item => {
+                if (filter === 'all' || item.dataset.category === filter) {
+                    item.style.display = 'grid'; // Or whatever display style you were using
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+
+<style>
+.item-type {
+    font-style: italic;
+    color: #777;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+</style>
 <div id="orderModal" class="modal">
         <div class="modal-content">
             <span onclick="closeOrderModal()" style="float: right; cursor: pointer; font-size: 24px;">&times;</span>
