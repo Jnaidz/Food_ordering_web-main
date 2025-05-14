@@ -622,7 +622,14 @@ a:hover {
 #back-to-top i {
     font-size: 1.2rem;
 }
+.food-menu-box img {
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
 
+.food-menu-box:hover img {
+    border: 2px solid green;
+}
 /* Responsive Design */
 @media (max-width: 768px) {
     .grid-2, .grid-3 {
@@ -653,6 +660,14 @@ a:hover {
         left: auto;
         right: 0;
     }
+}
+.food-menu-box img {
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.food-menu-box:hover img {
+    border: 2px solid green;
 }
     </style>
 </head>
@@ -919,20 +934,33 @@ a:hover {
     <script>
         let cart = [];
 
-        $(document).ready(function() {
-            loadCart();
-            updateCartDisplay();
+      $('.add-to-cart-btn').on('click', function() {
+    const btn = $(this);
+    const foodBox = btn.closest('.food-menu-box');
+    const name = foodBox.data('name');
+    const price = parseFloat(foodBox.data('price'));
+    const image = foodBox.data('image');
+    const quantity = parseInt(foodBox.find('.quantity-input').val());
 
-            $('.add-to-cart-btn').on('click', function() {
-                const foodBox = $(this).closest('.food-menu-box');
-                const name = foodBox.data('name');
-                const price = parseFloat(foodBox.data('price'));
-                const image = foodBox.data('image');
-                const quantity = parseInt(foodBox.find('.quantity-input').val());
+    if (btn.text().trim() === 'Add to Cart') {
+        addItemToCart(name, price, image, quantity);
+        btn.text('Selected');
+        btn.addClass('selected');
+    } else {
+        removeItemFromCartByName(name);
+        btn.text('Add to Cart');
+        btn.removeClass('selected');
+    }
+});
+function removeItemFromCartByName(name) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartDisplay();
+    }
+}
 
-                addItemToCart(name, price, image, quantity);
-            });
-        });
 
         function addItemToCart(name, price, image, quantity) {
             const existingItem = cart.find(item => item.name === name);
