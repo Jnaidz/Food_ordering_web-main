@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Junaid & Asnawi Food Website</title>
-    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="css/style.css">
+     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.css">
+    <!-- Hover CSS -->
     <link rel="stylesheet" href="css/hover-min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
     <style>
 body {
@@ -560,3 +564,669 @@ a:hover {
 }
 
 .social-links li {
+    margin-right: 15px;
+}
+
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.social-links img {
+    height: 30px;
+    width: auto;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.social-links img:hover {
+    opacity: 1;
+}
+
+/* Copyright */
+.copyright {
+    background-color: #222;
+    color: #aaa;
+    text-align: center;
+    padding: 20px 0;
+    font-size:
+    0.8rem;
+}
+
+.copyright a {
+    color: #ff6b6b;
+}
+
+.copyright a:hover {
+    color: #e45757;
+}
+
+/* Back to Top Button */
+#back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    display: none; /* Hidden by default, shown on scroll */
+    transition: background-color 0.3s ease;
+}
+
+#back-to-top:hover {
+    background-color: #e45757;
+}
+
+#back-to-top i {
+    font-size: 1.2rem;
+}
+.food-menu-box img {
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.food-menu-box:hover img {
+    border: 2px solid green;
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .menu li {
+        margin: 10px 0;
+    }
+
+    .food-search input[type="search"] {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .food-search input[type="submit"] {
+        width: 100%;
+        border-radius: 8px;
+    }
+
+    .cart-dropdown {
+        left: auto;
+        right: 0;
+    }
+}
+.food-menu-box img {
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+}
+
+.food-menu-box:hover img {
+    border: 2px solid green;
+}
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <nav id="site-top-nav" class="navbar-menu navbar-fixed-top">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" title="Logo">
+                        <img src="img/logo.png" alt="Logo" class="img-responsive">
+                    </a>
+                </div>
+                <div class="menu text-right">
+                    <ul>
+                        <li><a class="hvr-underline-from-center" href="index.html">Home</a></li>
+                        <li><a class="hvr-underline-from-center" href="categories.html">Categories</a></li>
+                        <li><a class="hvr-underline-from-center" href="foods.html">Menu</a></li>
+                        <li><a class="hvr-underline-from-center" href="order.html">Order</a></li>
+                        <li><a class="hvr-underline-from-center" href="contact.html">Contact</a></li>
+                        <li><a class="hvr-underline-from-center" href="history.html">History</a></li>
+                        <li class="cart-container">
+                            <a id="shopping-cart" class="shopping-cart">
+                                <i class="fa fa-cart-arrow-down"></i>
+                                <span class="badge" id="cart-count">0</span>
+                            </a>
+                            <div id="cart-content" class="cart-dropdown">
+                                <table class="cart-table">
+                                    <tbody id="cart-items">
+                                        </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">Total:</td>
+                                            <td id="cart-total">$0.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3" style="text-align: center;">
+                                                <button class="btn-primary" onclick="openOrderModal()">Confirm Order</button>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                <div id="empty-cart" style="display:none; text-align:center; padding:10px;">Your cart is empty.</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="food-search text-center" >
+        <div class="container">
+            <form action="">
+                <input type="search" placeholder="Search for food..." required>
+                <input type="submit" value="Search" class="btn-primary">
+            </form>
+        </div>
+    </section>
+    <section class="food-menu">
+        <div class="container">
+            <h2 class="text-center">Menu</h2>
+            <div class="heading-border"></div>
+            <div class="grid-2">
+                 <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Sandwich</h4>
+                    <p class="food-price">$6.00</p>
+                    <p class="food-details">Tasty sandwich with fresh vegetables and meat.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Sandwich</h4>
+                    <p class="food-price">$6.00</p>
+                    <p class="food-details">Tasty sandwich with fresh vegetables and meat.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Burger</h4>
+                    <p class="food-price">$7.00</p>
+                    <p class="food-details">Juicy beef burger with lettuce and cheese.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Pizza" data-price="8.00" data-image="img/food/p1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/p1.jpg" alt="Pizza" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Pizza</h4>
+                    <p class="food-price">$8.00</p>
+                    <p class="food-details">Another delicious pizza option.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Sandwich" data-price="6.00" data-image="img/food/s1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/s1.jpg" alt="Sandwich" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Sandwich</h4>
+                    <p class="food-price">$6.00</p>
+                    <p class="food-details">Another fresh sandwich variant.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+            <div class="food-menu-box" data-name="Burger" data-price="7.00" data-image="img/food/b1.jpg">
+                <div class="food-menu-img">
+                    <img src="img/food/b1.jpg" alt="Burger" class="img-responsive img-curve">
+                </div>
+                <div class="food-menu-desc">
+                    <h4>Burger</h4>
+                    <p class="food-price">$7.00</p>
+                    <p class="food-details">Extra beefy burger with toppings.</p>
+                    <input type="number" class="quantity-input" value="1" min="1">
+                    <button type="button" class="btn-primary add-to-cart-btn">Add To Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span onclick="closeOrderModal()" style="float: right; cursor: pointer; font-size: 24px;">&times;</span>
+            <h2 class="text-center">Order Details</h2>
+            <div id="modalSteps">
+                <div id="step-1" class="modal-step active">
+                    <h3>Review Your Order</h3>
+                    <div id="modal-cart-items">
+                        </div>
+                    <p>Total: <span id="modal-cart-total">$0.00</span></p>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="nextStep()">Continue</button>
+                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="step-2" class="modal-step">
+                    <h3>Delivery/Dine-in Details</h3>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" required>
+                    <label for="address">Address (for delivery):</label>
+                    <textarea id="address"></textarea>
+                    <label for="order-type">Dine In / Take Out:</label>
+                    <select id="order-type">
+                        <option value="dine_in">Dine In</option>
+                        <option value="take_out">Take Out</option>
+                        <option value="delivery">Delivery</option>
+                    </select>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="nextStep()">Continue</button>
+                        <button class="btn-secondary" onclick="prevStep()">Back</button>
+                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="step-3" class="modal-step">
+                    <h3>Payment Method</h3>
+                    <label for="payment-method">Select Payment Method:</label>
+                    <select id="payment-method">
+                        <option value="cash">Cash</option>
+                        <option value="gcash">GCash</option>
+                        <option value="wallet_card">Wallet Card</option>
+                    </select>
+                    <div id="payment-details">
+                        </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="submitOrder()">Submit Order</button>
+                        <button class="btn-secondary" onclick="prevStep()">Back</button>
+                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="step-4" class="modal-step">
+                    <h3>Review Your Information</h3>
+                    <div id="review-details">
+                        </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="finalSubmit()">Submit Now</button>
+                        <button class="btn-secondary" onclick="prevStep()">Back</button>
+                        <button class="btn-secondary" onclick="closeOrderModal()">Cancel</button>
+                    </div>
+                </div>
+
+                <div id="step-5" class="modal-step">
+                    <h3>Order Confirmation</h3>
+                    <div id="receipt">
+                        </div>
+                    <div class="modal-actions">
+                        <button class="btn-primary" onclick="closeOrderModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="footer">
+        <div class="container">
+            <div class="grid-3">
+                <div class="text-center">
+                    <h3>About Us</h3><br>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat officia,temporibus expedita dicta eligendi harum architecto fugiat sint, laudantium omnis animi. Voluptas praesentium maiores minima pariatur necessitatibus consequuntur, similique assumenda.</p>
+                </div>
+                <div class="texr-center">
+                    <h3>Site Map</h3><br>
+                    <div class="site-links">
+                        <a href="categories.html">Categories</a>
+                        <a href="foods.html">Foods</a>
+                        <a href="order.html">Order</a>
+                        <a href="contact.html">Contact</a>
+                        <a href="history.html">History</a>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <h3>Social Links</h3><br>
+                    <div class="social">
+                        <ul>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/facebook-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/fluency/48/null/instagram-new.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/twitter--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/linkedin-circled--v1.png"/></a></li>
+                            <li><a href="#"><img src="https://img.icons8.com/color/48/null/youtube-play.png"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright">
+        <div class="container text-center">
+            <p>All rights reserved. Design By <a href="#">Code Arcade</a></p>
+        </div>
+        <a id="back-to-top" class="btn-primary">
+            <i class="fa fa-angle-double-up"></i>
+        </a>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+        let cart = [];
+
+$('.add-to-cart-btn').on('click', function() {
+    const btn = $(this);
+    const foodBox = btn.closest('.food-menu-box');
+    const name = foodBox.data('name');
+    const price = parseFloat(foodBox.data('price'));
+    const image = foodBox.data('image');
+    const quantity = parseInt(foodBox.find('.quantity-input').val());
+
+    if (btn.text().trim() === 'Add to Cart') {
+        addItemToCart(name, price, image, quantity);
+        btn.text('Selected');
+        btn.css({
+            'background-color': 'green',
+            'color': 'white'
+        });
+    } else {
+        removeItemFromCartByName(name);
+        btn.text('Add to Cart');
+        btn.css({
+            'background-color': '',
+            'color': ''
+        });
+    }
+});
+
+function removeItemFromCartByName(name) {
+    const index = cart.findIndex(item => item.name === name);
+    if (index !== -1) {
+        cart.splice(index, 1);
+        saveCart();
+        updateCartDisplay();
+    }
+}
+
+
+        function addItemToCart(name, price, image, quantity) {
+            const existingItem = cart.find(item => item.name === name);
+
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({ name, price, image, quantity });
+            }
+
+            saveCart();
+            updateCartDisplay();
+        }
+
+        function removeItemFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            updateCartDisplay();
+            updateModalCart();
+        }
+
+        function saveCart() {
+            localStorage.setItem('cart', JSON.stringify(cart));
+        }
+
+        function loadCart() {
+            const storedCart = localStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartItemsContainer = $('#cart-items');
+            const cartCountSpan = $('#cart-count');
+            const cartTotalSpan = $('#cart-total');
+            const emptyCartDiv = $('#empty-cart');
+
+            cartItemsContainer.empty();
+            let total = 0;
+            let itemCount = 0;
+
+            if (cart.length === 0) {
+                emptyCartDiv.show();
+                cartTotalSpan.text('$0.00');
+            } else {
+                emptyCartDiv.hide();
+                cart.forEach((item, index) => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    itemCount += item.quantity;
+                    cartItemsContainer.append(`
+                        <tr class="cart-item">
+                            <td><img src="${item.image}" alt="${item.name}"></td>
+                            <td>${item.name}</td>
+                            <td>${item.quantity}</td>
+                            <td>$${itemTotal.toFixed(2)}</td>
+                            <td><span class="cart-item-remove" onclick="removeItemFromCart(${index})">&times;</span></td>
+                        </tr>
+                    `);
+                });
+                cartTotalSpan.text(`$${total.toFixed(2)}`);
+            }
+            cartCountSpan.text(itemCount);
+        }
+
+        let currentStep = 1;
+
+        function openOrderModal() {
+            if (cart.length > 0) {
+                $('#orderModal').show();
+                currentStep = 1;
+                showStep(currentStep);
+                updateModalCart();
+            } else {
+                alert('Your cart is empty. Please add items to your order.');
+            }
+        }
+
+        function closeOrderModal() {
+            $('#orderModal').hide();
+        }
+
+        function nextStep() {
+            if (currentStep < 5) {
+                currentStep++;
+                showStep(currentStep);
+            }
+        }
+
+        function prevStep() {
+            if (currentStep > 1) {
+                currentStep--;
+                showStep(currentStep);
+            }
+        }
+
+        function showStep(stepNumber) {
+            $('.modal-step').removeClass('active');
+            $(`#step-${stepNumber}`).addClass('active');
+
+            if (stepNumber === 3) {
+                const paymentMethod = $('#payment-method').val();
+                let paymentDetailsHtml = '';
+               if (paymentMethod === 'gcash') {
+    const totalAmount = parseFloat($('#modal-cart-total').text().replace('$', ''));
+    paymentDetailsHtml = `
+        <label for="gcash-number">GCash Number:</label>
+        <input type="text" id="gcash-number" placeholder="09XXXXXXXXX"><br>
+        <label for="gcash-amount">Amount to Pay (max $${totalAmount.toFixed(2)}):</label>
+        <input type="number" id="gcash-amount" max="${totalAmount}" step="0.01">
+    `;
+} else if (paymentMethod === 'wallet_card') {
+    paymentDetailsHtml = `
+        <label for="card-number">Card Number:</label>
+        <input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX">
+    `;
+} else if (paymentMethod === 'cod') {
+    paymentDetailsHtml = `
+        <p><strong>Payment on Delivery (Cash)</strong></p>
+    `;
+}
+
+                $('#payment-details').html(paymentDetailsHtml);
+            } else if (stepNumber === 4) {
+                const name = $('#name').val();
+                const phone = $('#phone').val();
+                const address = $('#address').val();
+                const orderType = $('#order-type').val();
+                const paymentMethod = $('#payment-method').val();
+                let paymentInfo = paymentMethod;
+               if (paymentMethod === 'gcash') {
+    const gcashNum = $('#gcash-number').val();
+    const gcashAmt = $('#gcash-amount').val();
+    paymentDetails = `GCash: ${gcashNum}, Amount: $${parseFloat(gcashAmt).toFixed(2)}`;
+
+                } else if (paymentMethod === 'wallet_card') {
+                    paymentInfo += `: ****-****-****-${$('#card-number').val().slice(-4)}`;
+                }
+
+                let reviewHtml = '<h3>Review Your Information</h3>';
+                reviewHtml += `<p><strong>Name:</strong> ${name}</p>`;
+                reviewHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
+                if (orderType === 'delivery') {
+                    reviewHtml += `<p><strong>Address:</strong> ${address}</p>`;
+                }
+                reviewHtml += `<p><strong>Order Type:</strong> ${orderType.replace('_', ' ')}</p>`;
+                reviewHtml += `<p><strong>Payment Method:</strong> ${paymentInfo}</p>`;
+                $('#review-details').html(reviewHtml);
+            }
+        }
+
+        function updateModalCart() {
+            const modalCartItemsContainer = $('#modal-cart-items');
+            const modalCartTotalSpan = $('#modal-cart-total');
+
+            modalCartItemsContainer.empty();
+            let total = 0;
+
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                modalCartItemsContainer.append(`
+                    <div class="food-details-modal">
+                        <img src="${item.image}" alt="${item.name}">
+                        <h4>${item.name} x ${item.quantity}</h4>
+                        <p>Price: $${item.price.toFixed(2)}</p>
+                        <p>Total: $${itemTotal.toFixed(2)}</p>
+                    </div>
+                `);
+            });
+            modalCartTotalSpan.text(`$${total.toFixed(2)}`);
+        }
+
+        function submitOrder() {
+            nextStep(); // Move to the review step
+        }
+
+      function finalSubmit() {
+    const name = $('#name').val();
+    const phone = $('#phone').val();
+    const address = $('#address').val();
+    const orderType = $('#order-type').val();
+    const paymentMethod = $('#payment-method').val();
+    let paymentDetails = '';
+    let amountPaid = 0;
+    const totalAmount = parseFloat($('#modal-cart-total').text().replace('$', ''));
+
+    if (paymentMethod === 'gcash') {
+        const gcashNum = $('#gcash-number').val();
+        amountPaid = parseFloat($('#gcash-amount').val());
+        if (isNaN(amountPaid) || amountPaid <= 0 || amountPaid > totalAmount) {
+            alert('Please enter a valid GCash amount not exceeding the total.');
+            return;
+        }
+        paymentDetails = `GCash: ${gcashNum}, Amount: $${amountPaid.toFixed(2)}`;
+    } else if (paymentMethod === 'wallet_card') {
+        const cardNum = $('#card-number').val();
+        amountPaid = totalAmount;
+        paymentDetails = `Card: ****-****-****-${cardNum.slice(-4)}`;
+    } else if (paymentMethod === 'cod') {
+        amountPaid = totalAmount;
+        paymentDetails = 'Cash on Delivery';
+    }
+
+    const receipt = generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, cart, amountPaid);
+    $('#receipt').html(receipt);
+
+    saveOrderToHistory(name, phone, address, orderType, paymentMethod, paymentDetails, cart, totalAmount, amountPaid);
+
+    cart = [];
+    saveCart();
+    updateCartDisplay();
+    nextStep(); // Move to the receipt step
+}
+
+
+       function generateReceipt(name, phone, address, orderType, paymentMethod, paymentDetails, items, amountPaid) {
+    let receiptHtml = '<h3>Order Receipt</h3>';
+    receiptHtml += `<p><strong>Name:</strong> ${name}</p>`;
+    receiptHtml += `<p><strong>Phone:</strong> ${phone}</p>`;
+    if (orderType === 'delivery') {
+        receiptHtml += `<p><strong>Address:</strong> ${address}</p>`;
+    }
+    receiptHtml += `<p><strong>Order Type:</strong> ${orderType.replace('_', ' ')}</p>`;
+    receiptHtml += `<p><strong>Payment Method:</strong> ${paymentMethod} ${paymentDetails}</p>`;
+    receiptHtml += '<h4>Order Items:</h4>';
+    items.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        receiptHtml += `<p>${item.name} x ${item.quantity} - $${itemTotal.toFixed(2)}</p>`;
+    });
+    receiptHtml += `<p><strong>Total:</strong> <span style="font-weight: bold;">${$('#modal-cart-total').text()}</span></p>`;
+    receiptHtml += `<p><strong>Amount Paid:</strong> $${parseFloat(amountPaid).toFixed(2)}</p>`;
+    receiptHtml += '<p>Thank you for your order!</p>';
+    return receiptHtml;
+}
+
+        function saveOrderToHistory(name, phone, address, orderType, paymentMethod, paymentDetails, items, total) {
+            const order = {
+                name: name,
+                phone: phone,
+                address: address,
+                orderType: orderType,
+                paymentMethod: paymentMethod,
+                paymentDetails: paymentDetails,
+                items: items,
+                total: total,
+                date: new Date().toLocaleString()
+            };
+
+            let history = localStorage.getItem('orderHistory');
+            if (history) {
+                history = JSON.parse(history);
+            } else {
+                history = [];
+            }
+            history.push(order);
+            localStorage.setItem('orderHistory', JSON.stringify(history));
+        }
+    </script>
+</body>
+</html>
